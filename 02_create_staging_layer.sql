@@ -27,6 +27,13 @@ END
 GO
 
 
+-- Create schema if not exists
+IF SCHEMA_ID('STG_Purchasing') IS NULL
+BEGIN
+	EXEC('CREATE SCHEMA STG_Purchasing');
+END
+GO
+
 -- Create SalesOrderHeader table
 IF OBJECT_ID('STG_Sales.SalesOrderHeader', 'U') IS NULL
 BEGIN 
@@ -372,6 +379,47 @@ BEGIN
         [Name] NVARCHAR(50),
         [CostRate] SMALLMONEY,
         [Availability] DECIMAL(8,2),
+        [ModifiedDate] DATETIME
+	);
+END
+GO
+
+-- Create ProductCostHistory table
+IF OBJECT_ID('STG_Production.ProductCostHistory', 'U') IS NULL
+BEGIN
+	CREATE TABLE STG_Production.ProductCostHistory(
+		[ProductID] INT,
+        [StartDate] DATETIME,
+		[EndDate] DATETIME,
+		[StandardCost] MONEY,
+        [ModifiedDate] DATETIME
+	);
+END
+GO
+
+-- Create ProductListPriceHistory table
+IF OBJECT_ID('STG_Production.ProductListPriceHistory', 'U') IS NULL
+BEGIN
+	CREATE TABLE STG_Production.ProductListPriceHistory(
+		[ProductID] INT,
+        [StartDate] DATETIME,
+		[EndDate] DATETIME,
+		[ListPrice] MONEY,
+        [ModifiedDate] DATETIME
+	);
+END
+GO
+
+
+-- Create ShipMethod table
+IF OBJECT_ID('STG_Purchasing.ShipMethod', 'U') IS NULL
+BEGIN
+	CREATE TABLE STG_Purchasing.ShipMethod(
+		[ShipMethodID] INT,
+        [Name] NVARCHAR(50),
+		[ShipBase] MONEY,
+		[ShipRate] MONEY,
+		[rowguid] UNIQUEIDENTIFIER,
         [ModifiedDate] DATETIME
 	);
 END
