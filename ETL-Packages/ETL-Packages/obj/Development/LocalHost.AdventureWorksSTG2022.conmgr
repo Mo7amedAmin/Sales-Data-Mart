@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.AdventureWorksSTG2022"
+  DTS:DTSID="{B71B9662-EC47-4C7D-8B01-363F9309988E}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorksSTG2022;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-ETL-Packages-{B71B9662-EC47-4C7D-8B01-363F9309988E}LocalHost.AdventureWorksSTG2022;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
